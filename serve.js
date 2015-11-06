@@ -2,7 +2,8 @@
 var express     = require('express'),
     program     = require('commander'),
     jadeStatic  = require('connect-jade-static'),
-    path        = require('path');
+    path        = require('path'),
+    browserSync = require('browser-sync');
 
 
 program
@@ -31,7 +32,15 @@ if (program.jade)
 else
   app.use(express.static(program.path));
 
+
 var server = app.listen(program.port || 3000, function () {
   var port = server.address().port;
-  console.log('Listening at :%s', port);
+  browserSync.init(null, {
+    proxy: 'http://localhost:' + port,
+    files: [program.path + '/**/*.*'],
+    port: 7000
+  });
+
+  console.log('Running Express at http://localhost:%s', port);
+  console.log('Running Browser-sync at http://localhost:%s', 7000);
 });

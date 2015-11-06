@@ -10,6 +10,7 @@ npm install -g
 
 ### Usage
 
+Following serves content from public/ folder
 ```
 serve -p public/
 ```
