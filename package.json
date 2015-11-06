@@ -1,0 +1,27 @@
+{
+  "name": "serve",
+  "version": "0.0.1",
+  "description": "",
+  "main": "serve.js",
+  "bin": {
+    "serve": "serve.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/victorzki/serve.git"
+  },
+  "author": "Victor Alveflo <victor.alveflo@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/victorzki/serve/issues"
+  },
+  "homepage": "https://github.com/victorzki/serve#readme",
+  "dependencies": {
+    "commander": "^2.9.0",
+    "connect-jade-static": "^0.2.2",
+    "express": "^4.13.3"
+  }
+}
