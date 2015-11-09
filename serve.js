@@ -35,7 +35,7 @@ var server = app.listen(program.port || 3000, function () {
   var port = server.address().port;
   browserSync.init(null, {
     proxy: 'http://localhost:' + port,
-    files: [directory + '/*.*'],
+    files: [directory + '/**/*.*'],
     port: 7000
   });
 
