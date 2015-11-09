@@ -10,6 +10,11 @@ npm install -g
 
 ### Usage
 
+Serves jade files from current directory
+```
+serve --jade
+```
+
 Following serves content from public/ folder
 ```
 serve -p public/
@@ -22,7 +27,8 @@ Options:
 
   -h, --help          output usage information
   -V, --version       output the version number
-  -p,  --path [path]  Specify path to serve files from
+  -p,  --path [path]  Specify path to serve files from. (Leave empty for current directory)
   -j,  --jade         If to use jade rendering
-       --port [port]  Specify path to serve files from
+       --port [port]  Specify port
+
 ```

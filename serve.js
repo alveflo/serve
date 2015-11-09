@@ -8,36 +8,34 @@ var express     = require('express'),
 
 program
   .version('0.0.1')
-  .option('-p,  --path [path]', 'Specify path to serve files from')
+  .option('-p,  --path [path]', 'Specify path to serve files from. (Leave empty for current directory)')
   .option('-j,  --jade', 'If to use jade rendering')
-  .option('     --port [port]', 'Specify path to serve files from')
+  .option('     --port [port]', 'Specify port')
   .parse(process.argv);
 
-if (!program.path) {
-  console.log('Please specifiy path. E.g.:');
-  console.log('\tserve -p public/');
-  return;
-}
+var directory = process.cwd();
+if (program.path)
+ directory = path.join(__dirname, program.path);
 
 var app = express();
 
 if (program.jade)
   app.use(jadeStatic({
-    baseDir: path.join(__dirname, program.path),
+    baseDir: directory,
     baseUrl: '/',
     jade: {
       pretty: true
     }
   }));
 else
-  app.use(express.static(program.path));
+  app.use(express.static(directory));
 
 
 var server = app.listen(program.port || 3000, function () {
   var port = server.address().port;
   browserSync.init(null, {
     proxy: 'http://localhost:' + port,
-    files: [program.path + '/**/*.*'],
+    files: [directory + '/*.*'],
     port: 7000
   });
 
